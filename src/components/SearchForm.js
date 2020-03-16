@@ -27,9 +27,9 @@ class SearchForm extends Component {
 
     const options = {
       method: 'GET',
+      apiKey: 'AIzaSyAkNgI_6tkuGUIhnKfclebH26rW1lQuwmM',
       headers: {
-        apiKey: 'AIzaSyAkNgI_6tkuGUIhnKfclebH26rW1lQuwmM',
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       }
     }
     fetch(fullURL, options)

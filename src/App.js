@@ -12,7 +12,7 @@ class App extends Component {
         <SearchForm/>
         </main>
       </div>
-    );
+    )
   }
 }
 
