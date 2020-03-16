@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import BookResultsItem from './BookResultsItem';
 
-
-class BookResults extends Component {
-  render() {
+function BookResults(props) {
     return (
-      <div>
-          <BookResultsItem />
-      </div>
+        <div>
+            {props.results.map(result => {
+                return (
+                    <BookResultsItem item={result} />
+                )
+            })}
+        </div>
     );
-  }
 }
 
 export default BookResults;
