@@ -13,8 +13,8 @@ class SearchForm extends Component {
     this.state = {
       items: [],
       search: '',
-      printType: null,
-      bookType: null,
+      printType: 'All',
+      bookType: 'Ebooks',
     }
   }
 
@@ -33,12 +33,17 @@ class SearchForm extends Component {
       }
     }
     fetch(fullURL, options)
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok){
+          throw new Error('Something went wrong, please try again later.')
+        }
+        return response.json();
+      })
       .then(data => {
-        // this.setState({
-        //   items: data.items
-        // })
-        console.log(data)
+        this.setState({
+          items: data.items
+        })
+        console.log(data.items)
       });
   }
 
@@ -68,7 +73,7 @@ class SearchForm extends Component {
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label htmlFor="Search">Search</label>
           <input
             type="text"
@@ -77,7 +82,7 @@ class SearchForm extends Component {
             placeholder="Enter Search Term"
             onChange={this.handleTextChange}
           />
-          <button type="submit" onSubmit={this.handleSubmit}>Search</button>
+          <button type="submit">Search</button>
           <label htmlFor="Print Type">Print Type:</label>
           <select onChange={e => this.handlePrintTypeFilter(e.target.value)}>
             <option>All</option>

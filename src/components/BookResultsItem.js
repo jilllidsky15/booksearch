@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 
-class BookResultsItem extends Component {
-  render() {
+function BookResultsItem(props) {
+  const { item } = props;
+  console.log({item})
     return (
       <ul>
           <li>
-              {/* <img src={} /> */}
-              <h2></h2>
-              <h3></h3>
-              <h3></h3>
-              <p></p>
+              <img src={item.volumeInfo.imageLinks.thumbnail} />
+              <h2>{item.volumeInfo.title}</h2>
+              <h3>{item.volumeInfo.authors}</h3>
+              <h3>{item.saleInfo.listPrice.amount}</h3>
+              <p>{item.volumeInfo.description}</p>
           </li>
       </ul>
-    );
-  }
+    )
 }
 
 export default BookResultsItem;
