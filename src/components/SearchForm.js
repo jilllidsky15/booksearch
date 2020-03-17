@@ -34,7 +34,7 @@ class SearchForm extends Component {
     }
     fetch(fullURL, options)
       .then(response => {
-        if (!response.ok){
+        if (!response.ok) {
           throw new Error('Something went wrong, please try again later.')
         }
         return response.json();
